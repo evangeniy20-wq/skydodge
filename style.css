@@ -43,7 +43,7 @@ body {
   content: '';
   position: absolute;
   inset: -48px;
-  z-index: 10;
+  z-index: 20;
   pointer-events: none;
   background: url('game-frame.png') center / 100% 100% no-repeat;
 }
@@ -55,7 +55,7 @@ body {
 
 .game-shell > .topbar,
 .game-shell > .controls {
-  z-index: 11;
+  z-index: 30;
 }
 
 .topbar,
