@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sky Dodge</title>
+    <link rel="icon" type="image/png" href="game-icon.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-shell">
+      <div class="topbar">
+        <div class="label">Sky Dodge</div>
+        <div class="stats">
+          <span>Счёт: <strong id="score">0</strong></span>
+          <span class="life-status">Жизни: <span id="lifeIcons" aria-label="Жизни"></span><strong id="lives">3</strong></span>
+          <span>Уровень: <strong id="level">1</strong></span>
+        </div>
+      </div>
+
+      <canvas id="gameCanvas" width="900" height="520" aria-label="Аркадная игра"></canvas>
+
+      <div class="controls">
+        <span>A / D или ← →</span>
+        <span>Пробел — выстрел</span>
+        <button id="startBtn" type="button">Старт</button>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>

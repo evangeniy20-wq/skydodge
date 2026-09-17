@@ -1,0 +1,152 @@
+:root {
+  --bg-1: #081323;
+  --bg-2: #101d37;
+  --panel: rgba(13, 22, 36, 0.78);
+  --primary: #7dd3fc;
+  --accent: #facc15;
+  --danger: #f87171;
+  --good: #4ade80;
+  --text: #e2e8f0;
+}
+
+@font-face {
+  font-family: 'Hardpixel';
+  src: url('Hardpixel.OTF') format('opentype');
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: 'Hardpixel', Arial, sans-serif;
+  background: radial-gradient(circle at top, #10213d, var(--bg-1) 40%, #050b12 100%);
+  color: var(--text);
+}
+
+.game-shell {
+  position: relative;
+  width: min(92vw, 960px);
+  background: var(--panel);
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  padding: 16px;
+}
+
+.game-shell::after {
+  content: '';
+  position: absolute;
+  inset: -48px;
+  z-index: 5;
+  pointer-events: none;
+  background: url('game-frame.png') center / 100% 100% no-repeat;
+  mix-blend-mode: screen;
+}
+
+.game-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+.topbar,
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.topbar {
+  margin-bottom: 12px;
+  padding: 0 8px;
+}
+
+.label {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+}
+
+.stats {
+  display: flex;
+  gap: 18px;
+  font-size: 1.05rem;
+}
+
+.life-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#lifeIcons {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.life-icon {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  background: url('life-heart-full-cutout.png') center / contain no-repeat;
+  image-rendering: pixelated;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: linear-gradient(180deg, #0b1528 0%, #111f35 100%);
+  border: none;
+  border-radius: 12px;
+}
+
+.controls {
+  margin-top: 12px;
+  padding: 0 8px;
+  font-size: 0.94rem;
+  color: #dbeafe;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--primary), #38bdf8);
+  color: #04111d;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 700px) {
+  .topbar,
+  .controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stats {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
