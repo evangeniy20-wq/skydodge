@@ -43,15 +43,19 @@ body {
   content: '';
   position: absolute;
   inset: -48px;
-  z-index: 5;
+  z-index: 10;
   pointer-events: none;
   background: url('game-frame.png') center / 100% 100% no-repeat;
-  mix-blend-mode: screen;
 }
 
 .game-shell > * {
   position: relative;
   z-index: 1;
+}
+
+.game-shell > .topbar,
+.game-shell > .controls {
+  z-index: 11;
 }
 
 .topbar,

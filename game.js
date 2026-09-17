@@ -930,17 +930,22 @@ function drawBackground() {
     if (state.backgroundOffset >= backgroundHeight) {
       state.backgroundOffset -= backgroundHeight;
     }
+
     const backgroundY = state.backgroundOffset - backgroundHeight;
-    ctx.drawImage(currentBackground, 0, backgroundY, width, backgroundHeight);
-    ctx.drawImage(currentBackground, 0, backgroundY + backgroundHeight, width, backgroundHeight);
+    const drawLoop = (image, alpha) => {
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.drawImage(image, 0, backgroundY, width, backgroundHeight);
+      ctx.drawImage(image, 0, backgroundY + backgroundHeight, width, backgroundHeight);
+      ctx.drawImage(image, 0, backgroundY + backgroundHeight * 2, width, backgroundHeight);
+      ctx.restore();
+    };
+
+    drawLoop(currentBackground, 1);
 
     if (state.backgroundTransition > 0 && nextBackground.complete && nextBackground.naturalWidth > 0) {
       const transitionProgress = 1 - state.backgroundTransition / 2.4;
-      ctx.save();
-      ctx.globalAlpha = transitionProgress;
-      ctx.drawImage(nextBackground, 0, backgroundY, width, backgroundHeight);
-      ctx.drawImage(nextBackground, 0, backgroundY + backgroundHeight, width, backgroundHeight);
-      ctx.restore();
+      drawLoop(nextBackground, transitionProgress);
     }
   }
 
@@ -968,8 +973,8 @@ function drawBackground() {
 function drawTentacleFrame() {
   if (assets.frame.complete && assets.frame.naturalWidth > 0) {
     ctx.save();
-    ctx.globalCompositeOperation = 'screen';
-    ctx.globalAlpha = 0.95;
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 1;
     ctx.drawImage(assets.frame, 0, 0, assets.frame.naturalWidth, assets.frame.naturalHeight, 0, 0, width, height);
     ctx.restore();
     return;
