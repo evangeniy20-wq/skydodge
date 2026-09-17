@@ -86,7 +86,7 @@ const keys = {
 
 const player = {
   x: width / 2,
-  y: height - 62,
+  y: height - 74,
   width: 42,
   height: 48,
   speed: 340
